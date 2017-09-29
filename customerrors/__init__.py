@@ -1,1 +1,1 @@
-__all__ = ["CommandNotFoundException"]
+__all__ = ["CommandNotFoundError"]
