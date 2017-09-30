@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 import re
 
 async def lyrics(ctx):
-    title = artist_name = None
     args = ctx.content.split(" ", 1)
     regex = r"\"([^\"]*)\""
 
@@ -55,18 +54,18 @@ async def lyrics(ctx):
         lyrics_line_split = ""
 
         for l in lyrics_arr:
-            print("Line: " + l)
+            # print("Line: " + l)
             total_length += len(l)
-            print("Total Length: " + str(total_length))
+            # print("Total Length: " + str(total_length))
             if total_length >= 1700:
-                print("\tLength Maximum Reached: Shoot Prepared Message")
+                # print("\tLength Maximum Reached: Shoot Prepared Message")
                 await client.send_message(ctx.channel, lyrics_line_split)
                 lyrics_line_split = l
                 total_length = len(l)
             else:
                 lyrics_line_split += l + "\n"
 
-        print("Lyrics to be Flushed: " + lyrics_line_split)
+        # print("Lyrics to be Flushed: " + lyrics_line_split)
         return await client.send_message(ctx.channel, lyrics_line_split)
     else:
         return await client.send_message(ctx.channel, "No Lyrics")
